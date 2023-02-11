@@ -10,9 +10,9 @@ spec:
   source:
     repoURL: https://github.com/federicogmansilla/apps.git
     targetRevision: HEAD
-    path: statics
+    path: apps/statics/
   destination:
-    server: https://1DE927E17AB0720046DD037E235A5402.gr7.us-east-1.eks.amazonaws.com
+    server: https://kubernetes.default.svc
     namespace: statics
   syncPolicy:
     automated:
