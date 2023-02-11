@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: statics
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: statics
+  source:
+    repoURL: https://github.com/federicogmansilla/apps.git
+    targetRevision: HEAD
+    path: statics
+  destination:
+    server: https://1DE927E17AB0720046DD037E235A5402.gr7.us-east-1.eks.amazonaws.com
+    namespace: statics
+  syncPolicy:
+    automated:
+      selfHeal: true
