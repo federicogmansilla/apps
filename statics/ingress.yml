@@ -1,18 +1,20 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: api
+  name: statics
+  namespace: statics
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     kubernetes.io/ingress.class: alb
+    ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
   - http:
       paths:
-      - path: /api
+      - path: /statics
         pathType: Prefix
         backend:
           service:
-            name: api
+            name: statics
             port:
               number: 80
