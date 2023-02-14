@@ -1,19 +1,19 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: statics
+  name: api
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: api
   source:
     repoURL: https://github.com/federicogmansilla/apps.git
     targetRevision: stage
-    path: statics
+    path: api
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: statics
+    namespace: api
   syncPolicy:
     automated:
       selfHeal: true
