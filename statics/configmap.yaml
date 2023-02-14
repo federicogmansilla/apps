@@ -5,4 +5,4 @@ metadata:
   namespace: statics
 data: 
   index.html: 
-    <html><h1>hello from Dev!<h1></html>
+    <html><h1>hello from Staging!<h1></html>
