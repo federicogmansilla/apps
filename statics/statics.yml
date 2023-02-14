@@ -6,33 +6,40 @@ metadata:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-nginx
+  name: statics
 spec:
   selector:
     matchLabels:
-      run: my-nginx
+      run: statics
   replicas: 1
   template:
     metadata:
       labels:
-        run: my-nginx
+        run: statics
     spec:
       containers:
-      - name: my-nginx
+      - name: statics
         image: nginx
         ports:
         - containerPort: 80
+        volumeMounts:
+          - name: static-html
+            mountPath: /usr/share/nginx/html/statics
+      volumes:
+        - name: static-html
+          configMap:
+            name: static-html
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-nginx
+  name: statics
   labels:
-    run: my-nginx
+    run: statics
 spec:
   ports:
   - port: 80
     protocol: TCP
   type: LoadBalancer
   selector:
-    run: my-nginx
+    run: statics

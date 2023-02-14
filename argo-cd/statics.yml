@@ -6,13 +6,13 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: statics
+  project: default
   source:
     repoURL: https://github.com/federicogmansilla/apps.git
     targetRevision: HEAD
-    path: apps/statics/
+    path: statics
   destination:
-    server: https://kubernetes.default.svc
+    server: 'https://kubernetes.default.svc'
     namespace: statics
   syncPolicy:
     automated:
